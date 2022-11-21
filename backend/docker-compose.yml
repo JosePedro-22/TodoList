@@ -1,0 +1,22 @@
+version: '20.10'
+# passsando especificaçoes para ao passar o comando docker-compose up -d carregar todas as informaçoes de parametros
+services: 
+  database:
+    image: postgres
+    container_name: tutorial
+    restart: always
+    # porta usada 
+    ports:
+      - 5432:5432
+    environment: 
+    # criando variavies de ambiente...
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=database
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
+    driver: local
+# com esses parametros eu ja consigo rodar meu banco atraves do docker 
